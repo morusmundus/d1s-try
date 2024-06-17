@@ -2,14 +2,13 @@ package com.example.server.controller;
 
 import com.example.server.entity.UserPrincipal;
 import com.example.server.dto.BookOrderDto;
+import com.example.server.repositories.OrderRepository;
+import com.example.server.service.OrderService;
 import com.example.server.service.ReceiptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReceiptController {
     private final ReceiptService receiptService;
+    private final OrderService orderService;
 
     @PostMapping("/orders")
     public ResponseEntity<Object> orderBooks(
@@ -25,6 +25,11 @@ public class ReceiptController {
     ) {
         receiptService.createReceipt(principal.getUserId(), itemsId);
         return ResponseEntity.accepted().build();
+    }
+
+    @GetMapping("/user-orders")
+    public Object getUserOrdersInfo(@AuthenticationPrincipal UserPrincipal user) {
+        return orderService.findAllUsersOrders(user.getUserId());
     }
 
 }

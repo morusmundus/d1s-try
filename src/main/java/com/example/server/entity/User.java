@@ -32,7 +32,9 @@ public class User extends BaseEntity {
     @JsonIgnore
     private List<Receipt> receipts;
 
-    public User(Long id) {
-        super(id);
-    }
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<UserPersonalInfo> userPersonalInfos;
+
+    public User(Long id) {super(id);}
 }

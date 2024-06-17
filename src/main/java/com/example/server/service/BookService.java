@@ -80,6 +80,7 @@ public class BookService extends AbstractService<Book> {
         List<AuthorsRef> authors = dto.getAuthors().stream().map(authorService::findByAuthorFIO).toList();
 
         List<GenreRef> genres = dto.getGenres().stream().map(genresService::findByGenreName).toList();
+
         Book book = Book.builder()
                 .title(dto.getTitle())
                 .copiesCount(dto.getAvailableCopies())
@@ -87,6 +88,7 @@ public class BookService extends AbstractService<Book> {
                 .authors(authors)
                 .url(dto.getUrl())
                 .genres(genres)
+                .price(dto.getPrice())
                 .build();
 
         repository.save(book);

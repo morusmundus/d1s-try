@@ -22,7 +22,6 @@ public class UserService extends AbstractService<User> {
         super(repository);
         this.messageService = messageService;
     }
-
     public Optional<User> findByEmail(String email) {
         return ((UserRepository) repository).findByEmail(email);
     }

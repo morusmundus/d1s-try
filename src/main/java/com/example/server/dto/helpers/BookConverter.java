@@ -26,6 +26,7 @@ public class BookConverter {
                 .genres(genres)
                 .url(book.getUrl())
                 .isAvailable(book.getCopiesCount() > 0)
+                .price(book.getPrice())
                 .build();
     }
 }

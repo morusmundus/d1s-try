@@ -34,10 +34,11 @@ public class Book extends BaseEntity {
     )
     private List<GenreRef> genres;
 
-    @CurrentTimestamp
+    //@CurrentTimestamp
     private Date published;
 
     private String url;
     private int copiesCount;
 
+    private Double price;
 }

@@ -18,6 +18,7 @@ public class BookDto {
     private List<String> genres;
     private String url;
     private Date published;
+    private Double price;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private boolean isAvailable;
 }

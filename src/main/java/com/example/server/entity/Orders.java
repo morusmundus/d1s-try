@@ -21,4 +21,5 @@ public class Orders extends BaseEntity {
     @ManyToOne
     private Book book;
     private int productQuantity;
+    
 }
